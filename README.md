@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+# Learning Redux
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Redux is a powerful tool that helps us manage state, or data, in our applications. It utilizes _*STORE*_, _*ACTIONS*_, _*REDUCERS*_, and _*DISPATCH*_ to store and manipulate data.
 
-## Available Scripts
+## The Building Blocks
 
-In the project directory, you can run:
+Each of these building blocks plays a vital role in the data chain of our applications.
 
-### `npm start`
+### `STORE`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Store is as it sounds, it stores our data. We create a store imported from [redux](https://www.npmjs.com/package/redux).
+<sub>I understand store is deprecated and redux maintainers suggest an alternative solution.</sub>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### `ACTION`
 
-### `npm test`
+Actions are intentions. We define them as an intent to change state. Actions are called and in turn call the _*REDUCERS*_ to compute and perform our intentions to update our state. Parameters can be passed to actions, depending on our use case, that are then passed into our _*REDUCERS*_.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### `REDUCERS`
 
-### `npm run build`
+Reducers are triggered by our _*ACTIONS*_. Reducers perform the 'heavy lifting' by executing and updating the state in our _*STORE*_. Reducers are triggered by _*ACTIONS*_ that are triggered by _*DISPATCH*_.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### `DISPATCH`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Dispatch is what glues our _*ACTIONS*_ to our _*REDUCERS*_. When we call dispatch we pass in our _*ACTION*_ function. Our _*ACTION*_ function returns a 'type' and<sup>\*</sup>, if passed parameters, a 'payload'. Our dispatch function then searches our reducers for the cooresponding 'type'. Once dispatch finds the reducer that has our 'type' it will then trigger that _*REDUCER*_ and state is then changed and saved to _*STORE*_ for future reference.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<sub><sup>\*</sup>Payload can also be returned without parameters passed to the action.</sub>
 
-### `npm run eject`
+## Summary
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+In conclusion Redux is a powerful tool in your developer tool kit. It can greatly simplify state especially within a large codebase. With these building blocks we can build robust web applications that keep our data safe, secure, and flowing properly.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Thoughts on State Management
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+-Breaking up our Redux structure into bite size pieces can make the code easier to manage.
+-Seperating our reducers based on funcitonality can help prevent conflicts<sub>maybe performance?</sub> during dispatch.
+-Using the [Redux DevTools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd) can help with visualizing state for debugging.
+-Structuring state is important to consider when building out an application. Get the data where it needs to be and keep it out of where it doesn't.

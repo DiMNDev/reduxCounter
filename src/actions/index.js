@@ -1,17 +1,5 @@
-export const increment = (by) => {
-  return {
-    type: "INCREMENT",
-    payload: by,
-  };
-};
-export const decrement = () => {
-  return {
-    type: "DECREMENT",
-  };
-};
+import { createAction } from "@reduxjs/toolkit";
 
-export const login = () => {
-  return {
-    type: "SIGN_IN",
-  };
-};
+export const increment = createAction("increment");
+export const decrement = createAction("decrement");
+export const login = createAction("login");

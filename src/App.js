@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./app.css";
 import { useSelector, useDispatch } from "react-redux";
 import { increment, decrement, login } from "./actions";
@@ -7,17 +7,20 @@ function App() {
   //useSelector is a function that will use the argument state to pull the data from our reducers state.
   const counter = useSelector((state) => state.counter);
   const isLogged = useSelector((state) => state.isLogged);
+  //useDispatch to call actions
   const dispatch = useDispatch();
   const signInBtn = document.querySelector(".signInBtn");
+  const [secretNumber, setRandom] = useState(Math.floor(Math.random() * 30));
+
   const canLogin = (counter) => {
-    if (counter === 30) {
+    if (counter === secretNumber) {
       return true;
     } else {
       return false;
     }
   };
   if (signInBtn) {
-    if (counter === 30) {
+    if (counter === secretNumber) {
       signInBtn.style.backgroundColor = "blue";
       signInBtn.style.color = "aliceblue";
     } else {
@@ -28,7 +31,7 @@ function App() {
   return (
     <div className="App">
       <div className="formContainer">
-        <h1 className="secretNumber">30</h1>
+        <h1 className="secretNumber">{secretNumber}</h1>
         <h1>Counter: {counter} </h1>
         <div className="buttonContainer">
           <button
@@ -39,20 +42,21 @@ function App() {
           </button>
           <button
             className="decrementBtn"
-            onClick={() => dispatch(canLogin() ? login() : decrement())}
+            onClick={() => dispatch(canLogin() ? login() : decrement(1))}
           >
             -1
           </button>
         </div>
         <button
           className="signInBtn"
-          onClick={counter === 30 ? () => dispatch(login()) : () => ""}
+          onClick={canLogin(counter) ? () => dispatch(login()) : () => ""}
         >
           Sign In
         </button>
-        {isLogged && counter === 30 ? (
+        {isLogged && counter === secretNumber ? (
           <h3>
-            Valuable Information you shouldn't see unless counter equals 30
+            Valuable Information you shouldn't see unless counter equals{" "}
+            {secretNumber}
           </h3>
         ) : (
           ""

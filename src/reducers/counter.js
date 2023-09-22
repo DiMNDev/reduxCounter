@@ -1,12 +1,14 @@
-const counterReducer = (state = 0, action) => {
-  switch (action.type) {
-    case "INCREMENT":
-      return state + action.payload;
-    case "DECREMENT":
-      return state - 1;
-    default:
-      return state;
-  }
-};
+import { createReducer } from "@reduxjs/toolkit";
+import { increment, decrement } from "../actions";
+
+const counterReducer = createReducer(0, (builder) => {
+  builder
+    .addCase(increment, (state, action) => {
+      return (state += action.payload);
+    })
+    .addCase(decrement, (state, action) => {
+      return (state -= action.payload);
+    });
+});
 
 export default counterReducer;

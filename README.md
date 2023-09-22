@@ -8,8 +8,7 @@ Each of these building blocks plays a vital role in the data chain of our applic
 
 ### `STORE`
 
-Store is as it sounds, it stores our data. We create a store imported from [redux](https://www.npmjs.com/package/redux).
-<sub>I understand store is deprecated and redux maintainers suggest an alternative solution.</sub>
+Store is as it sounds, it stores our data. We configure a store using 'configureStore' imported from [redux toolkit](https://www.npmjs.com/package/@reduxjs/toolkit).
 
 ### `ACTION`
 

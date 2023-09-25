@@ -9,7 +9,7 @@ Each of these building blocks plays a vital role in the data chain of our applic
 ### `STORE`
 
 Store is as it sounds, it stores our data. We create a store imported from [redux](https://www.npmjs.com/package/redux).
-<sub>I understand store is deprecated and redux maintainers suggest an alternative solution.</sub>
+<sub>I understand store is deprecated and redux maintainers suggest an alternative solution. See modern branch.</sub>
 
 ### `ACTION`
 
@@ -21,9 +21,15 @@ Reducers are triggered by our _*ACTIONS*_. Reducers perform the 'heavy lifting' 
 
 ### `DISPATCH`
 
-Dispatch is what glues our _*ACTIONS*_ to our _*REDUCERS*_. When we call dispatch we pass in our _*ACTION*_ function. Our _*ACTION*_ function returns a 'type' and<sup>\*</sup>, if passed parameters, a 'payload'. Our dispatch function then searches our reducers for the cooresponding 'type'. Once dispatch finds the reducer that has our 'type' it will then trigger that _*REDUCER*_ and state is then changed and saved to _*STORE*_ for future reference.
+Dispatch is what glues our _*ACTIONS*_ to our _*REDUCERS*_. When we call dispatch we pass in our _*ACTION*_ function. Our _*ACTION*_ function returns a 'type' <sup>\*</sup>and, if passed parameters, a 'payload'. Our dispatch function then searches our reducers for the cooresponding 'type'. Once dispatch finds the reducer that has our 'type' it will then trigger that _*REDUCER*_ and state is then changed and saved to _*STORE*_ for future reference.
 
 <sub><sup>\*</sup>Payload can also be returned without parameters passed to the action.</sub>
+
+All of these things are great but how do we _*SELECT*_ them from the store? The _*useSelector()*_ function baked right into redux.
+
+### `useSelector`
+
+We use "useSelector" to access our store. We pass in an arrow function we point, using dot operator syntax, to the data that we are wanting to access within the store. This arrow function will the return the value for us to use in our application.
 
 ## Summary
 

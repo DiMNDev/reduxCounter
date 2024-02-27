@@ -68,6 +68,8 @@ const allReducers = combineReducers({
   counter: counterReducer,
   isLogged: loginReducer,
 });
+
+export default allReducers;
 ```
 
 ### `DISPATCH`
